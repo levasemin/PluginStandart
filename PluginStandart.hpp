@@ -24,6 +24,8 @@
 #include "Widgets/ScrollBar.hpp"
 #include "Widgets/Label.hpp"
 
+#include "WidgetCreator/WidgetCreator.hpp"
+
 #include "Other/context.hpp"
 #include "Other/functions.hpp"
 
