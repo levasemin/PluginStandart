@@ -17,4 +17,5 @@ namespace booba
 
     extern "C" void* getLibSymbol(GUID guid, const char* name);
 
+    extern "C" void* getWidgetCreator();
 }
