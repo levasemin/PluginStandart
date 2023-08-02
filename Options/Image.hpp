@@ -60,7 +60,7 @@ namespace booba
          *
          * @param pic - the picture to set, move-only
          */
-        virtual void setPicture(Picture &&pic) = 0;
+        virtual void setPicture(Picture &&pic, size_t x, size_t y) = 0;
 
         /**
          * @brief Get the Hidden Layer image, that allows to add some not persistant changes to the picture
