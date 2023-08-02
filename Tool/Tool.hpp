@@ -29,11 +29,5 @@ namespace booba
          * @return const char* - rel path to texture.
          */
         virtual const char* getTexture() = 0;
-
-        /**
-         * @brief Build widget on toolbar by using createButoon/createLabel/createSlider/createCanvas
-         * They will be added to toolbar.
-         */
-        virtual void buildSetupWidget() = 0;
     };
 }

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../Widgets/Widget.hpp"
 
 namespace booba
@@ -13,6 +15,6 @@ namespace booba
             SCROLLBAR
         };
 
-        Widget *createWidget(Type type, int w, int h, int x, int y);
+        virtual Widget *createWidget(Type type, int w, int h, int x, int y) = 0;
     };
 }
