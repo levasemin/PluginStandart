@@ -29,5 +29,7 @@ namespace booba
          * @return const char* - rel path to texture.
          */
         virtual const char* getTexture() = 0;
+
+        virtual std::pair<int, int>getShape() = 0;
     };
 }
