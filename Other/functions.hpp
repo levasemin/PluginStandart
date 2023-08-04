@@ -7,7 +7,7 @@ namespace booba
 {
     extern "C" GUID getGUID();
 
-    extern "C" void init_module();
+    extern "C" void* init_module();
 
-    extern "C" void* getWidgetCreator();
+    extern "C" void* getWidgetCreator(booba::GUID guid);
 }
