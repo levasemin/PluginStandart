@@ -15,7 +15,7 @@ namespace booba
          * @param image - Image to apply tool / filter. Can be nullptr. You shouldn't expect it to be valid after return
          * @param event - Event to proceed. Not nullptr.
          */
-        virtual void apply(Image* image, const Event* event) = 0;
+        virtual void apply(Image* image, Image *hidden_layer, const Event* event) = 0;
 
         /**
          * @brief Destroy the Tool object
