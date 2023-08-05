@@ -44,5 +44,10 @@ namespace booba
         {
             return r == that.r && g == that.g && b == that.b && a == that.a;
         }
+
+        bool operator !=(const Color &that) const
+        {
+            return !(*this == that);
+        }
     };
 }
