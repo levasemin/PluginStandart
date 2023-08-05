@@ -11,10 +11,5 @@ namespace booba
         Color fgColor, bgColor;
     };
 
-    struct GUID
-    {
-        char str[37];
-    };
-
     extern ApplicationContext* APPCONTEXT;
 }
