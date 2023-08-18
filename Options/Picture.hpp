@@ -12,11 +12,10 @@ namespace booba
         
         Picture() = default;
         Picture(const Picture &other):
-            w_(other.w_),
-            h_(other.h_)
+            shape_(other.shape_)
         {
-            data_ = new Color[w_ * h_];
-            for (int pos = 0; pos < w_ * h_; pos++)
+            data_ = new Color[shape_.x_ * shape_.y_];
+            for (int pos = 0; pos < shape_.x_ * shape_.y_; pos++)
             {
                 data_[pos] = other.data_[pos];
             }
@@ -24,74 +23,68 @@ namespace booba
 
         Picture &operator=(const Picture &other)
         {
-            w_ = other.w_;
-            h_ = other.h_;
+            shape_ = other.shape_;
 
             if (data_)
             {
                 delete[] data_;
             }
 
-            data_ = new Color[w_ * h_];
-            for (int pos = 0; pos < w_ * h_; pos++)
+            data_ = new Color[shape_.x_ * shape_.y_];
+            for (int pos = 0; pos < shape_.x_ * shape_.y_; pos++)
             {
                 data_[pos] = other.data_[pos];
             }
         }
         
-        void create(size_t w, size_t h, size_t x, size_t y, Color *image, size_t image_w, size_t image_h)
+        void create(Vector2d shape, Vector2d position, Color *image, Vector2d image_shape)
         {
-            w_ = w;
-            h_ = h;
+            shape_ = shape;
             
             if (data_)
             {
                 delete[] data_;
             }
 
-            data_ = new Color[w * h];
-            for (size_t i = 0; i < h; ++i)
-                std::copy(image + (i + y) * image_w + x,
-                            image + (i + y) * image_w + x + w,
-                            data_ + i * w);
+            data_ = new Color[shape_.x_ * shape_.y_];
+            for (size_t i = 0; i < shape_.y_; ++i)
+                std::copy(image + (i + position.y_) * image_shape.x_ + position.x_,
+                            image + (i + shape_.y_) * image_shape.x_ + position.x_ + shape_.x_,
+                            data_ + i * shape_.x_);
         }
 
-        void create(size_t w, size_t h, Color color)
+        void create(Vector2d shape, Color color)
         {
-            w_ = w;
-            h_ = h;
+            shape_ = shape;
 
             if (data_)
             {
                 delete[] data_;
             }
 
-            data_ = new Color[h * w];
+            data_ = new Color[shape_.x_ * shape_.y_];
             
-            for (size_t pos = 0; pos < w * h; pos++)
+            for (size_t pos = 0; pos < shape_.x_ * shape_.y_; pos++)
             {
                 data_[pos] = color;
             }
         }
 
-        void create(size_t w, size_t h, size_t x, size_t y, Image *image)
+        void create(Vector2d shape, Vector2d position, Image *image)
         {
-            w_ = w;
-            h_ = h;
+            shape_ = shape;
 
-            size_t image_w = image->getW();
-            size_t image_h = image->getH();
-            assert(x + w <= image_w and y + h <= image_h);
+            assert(position.x_ + shape.x_ <= image->getSize().x_ and position.y_ + shape_.y_ <= image->getSize().y_);
 
             if (data_)
             {
                 delete[] data_;
             }
 
-            data_ = new Color[w * h];
-            for (size_t i = 0; i < w; ++i)
-                for (size_t j = 0; j < h; ++j)
-                    data_[j * w + i] = image->getPixel(i + x, j + y);
+            data_ = new Color[shape_.x_ * shape_.y_];
+            for (size_t i = 0; i < shape.y_; ++i)
+                for (size_t j = 0; j < shape_.x_; ++j)
+                    data_[j * shape_.x_ + i] = image->getPixel(Vector2d(i + position.x_, j + position.y_));
         }
 
         Picture &operator=(Picture &&other)
@@ -101,11 +94,10 @@ namespace booba
                 delete[] data_;
             }
 
-            data_ = other.data_;
-            w_ = other.w_;
-            h_ = other.h_;
+            data_  = other.data_;
+            shape_ = other.shape_;
 
-            other.w_ = other.h_ = -1;
+            other.shape_ = Vector2d(-1, -1);
             other.data_ = nullptr;
 
             return *this;
@@ -118,15 +110,14 @@ namespace booba
                 delete[] data_;
             }
             
-            w_ = h_ = -1;
             data_ = nullptr;
         }
         
-        void setPixel(size_t x, size_t y, booba::Color color)
+        void setPixel(Vector2d position, booba::Color color)
         {
             if (data_)
             {
-                data_[y * w_ + x] = color;
+                data_[position.y_ * shape_.x_ + position.x_] = color;
             }
         }
 
@@ -140,35 +131,30 @@ namespace booba
         {
             auto ret = data_;
 
-            w_ = h_ = -1;
+            shape_ = Vector2d(-1, -1);
             data_ = nullptr;
 
             return ret;
         }
         
-        size_t getH() const
+        Vector2d getSize() const 
         {
-            return h_;
-        }
-
-        size_t getW() const
-        {
-            return w_;
+            return shape_;
         }
 
         void setColor(booba::Color color)
         {
-            for (size_t x = 0; x < w_; x++)
+            for (size_t y = 0; y < shape_.y_; y++)
             {
-                for (size_t y = 0; y < h_; y++)
+                for (size_t x = 0; x < shape_.x_; x++)
                 {
-                    data_[y * w_ + x] = color;
+                    data_[y * shape_.x_ + x] = color;
                 }
             }
         }
 
     private:
-        size_t w_, h_;
+        Vector2d shape_;
         Color *data_ = nullptr;
         bool owning_ = true;
     };

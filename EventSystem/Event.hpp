@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include "../Options/Vector2d.hpp"
 
 namespace booba
 {
@@ -30,16 +31,12 @@ namespace booba
 
         struct MotionEventData
         {
-            size_t x, y;
-            /**
-             * @brief Relative to previous mouse position.
-             */
-            int64_t rel_x, rel_y;
+            Vector2d position;
         };
 
         struct MouseButtonEventData
         {
-            size_t x, y;
+            Vector2d position;
             MouseButton button;
             /**
              * @brief If corresponding keys was pressed.
@@ -154,7 +151,7 @@ namespace booba
             F12,          ///< The F12 key
             F13,          ///< The F13 key
             F14,          ///< The F14 key
-            F15,          ///< The F15 key
+            F1  5,          ///< The F15 key
             Pause,        ///< The Pause key
 
             KeyCount,     ///< Keep last -- the total number of keyboard keys

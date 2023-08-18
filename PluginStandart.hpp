@@ -18,6 +18,7 @@
 #include "Options/Color.hpp"
 #include "Options/Image.hpp"
 #include "Options/Picture.hpp"
+#include "Options/Vector2d.hpp"
 
 #include "Widgets/Button.hpp"
 #include "Widgets/Editor.hpp"

@@ -15,6 +15,6 @@ namespace booba
             SCROLLBAR
         };
 
-        virtual Widget *createWidget(Type type, int w, int h, int x, int y) = 0;
+        virtual Widget *createWidget(Type type, Vector2d shape, Vector2d position) = 0;
     };
 }

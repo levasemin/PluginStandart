@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Color.hpp"
+#include "Vector2d.hpp"
 
 namespace booba
 {
@@ -14,14 +15,7 @@ namespace booba
          *
          * @return size_t - height of image.
          */
-        virtual size_t getH()     = 0;
-
-        /**
-         * @brief Get width of image
-         *
-         * @return size_t - width of image
-         */
-        virtual size_t getW()     = 0;
+        virtual Vector2d getSize() = 0;
 
         /**
          * @brief Get the Pixel object
@@ -30,7 +24,7 @@ namespace booba
          * @param y - y coord. Must be less than height
          * @return Color - color of pixel
          */
-        virtual Color getPixel(size_t x, size_t y) = 0;
+        virtual Color getPixel(Vector2d position) = 0;
 
         /**
          * @brief Sets pixel on image.
@@ -39,7 +33,7 @@ namespace booba
          * @param y - y coord. Must be less than height
          * @param color - color of new pixel.
          */
-        virtual void setPixel(size_t x, size_t y, Color color) = 0;
+        virtual void setPixel(Vector2d position, Color color) = 0;
 
         /**
          * @brief Get picture - a rectangular pixel array.
@@ -51,7 +45,7 @@ namespace booba
          * @param w - width of the rectangular
          * @param h - height of the rectangular
          */
-        virtual Picture getPicture(size_t x, size_t y, size_t w, size_t h) = 0;
+        virtual Picture getPicture(Vector2d position, Vector2d shape) = 0;
 
         /**
          * @brief Set picture - a rectangular pixel array.
@@ -60,7 +54,7 @@ namespace booba
          *
          * @param pic - the picture to set, move-only
          */
-        virtual void setPicture(Picture &pic, size_t image_x, size_t image_y, size_t pic_start_x, size_t pic_start_y, size_t pic_end_x, size_t pic_end_y, bool applyAlpha) = 0;
+        virtual void setPicture(Picture &pic, Vector2d image_pos, Vector2d pic_start, Vector2d pic_end, bool applyAlpha) = 0;
         
         /**
          * @brief 
@@ -75,7 +69,7 @@ namespace booba
          * @param color color for clean
          */
         virtual void clean(const Color &color = Color::WHITE) = 0;
-
+    
     protected:
         ~Image() {}
     };

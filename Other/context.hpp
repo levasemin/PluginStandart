@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../Options/Color.hpp"
 namespace booba
 {
     struct ApplicationContext

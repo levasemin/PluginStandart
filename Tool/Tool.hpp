@@ -30,6 +30,6 @@ namespace booba
          */
         virtual const char* getTexture() = 0;
 
-        virtual std::pair<size_t, size_t> getShape() = 0;
+        virtual Vector2d getShape() = 0;
     };
 }
