@@ -61,7 +61,14 @@ namespace booba
          * @param pic - the picture to set, move-only
          */
         virtual void setPicture(Picture &pic, size_t image_x, size_t image_y, size_t pic_start_x, size_t pic_start_y, size_t pic_end_x, size_t pic_end_y, bool applyAlpha) = 0;
-
+        
+        /**
+         * @brief 
+         * 
+         * @param pic 
+         */
+        virtual void replaceWithPicture(Picture &pic) = 0;
+        
         /**
          * @brief clean image by color
          *
