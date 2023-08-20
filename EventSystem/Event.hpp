@@ -151,7 +151,7 @@ namespace booba
             F12,          ///< The F12 key
             F13,          ///< The F13 key
             F14,          ///< The F14 key
-            F1  5,          ///< The F15 key
+            F15,          ///< The F15 key
             Pause,        ///< The Pause key
 
             KeyCount,     ///< Keep last -- the total number of keyboard keys

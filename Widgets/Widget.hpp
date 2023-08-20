@@ -1,5 +1,6 @@
 #pragma once
 #include "../Options/Color.hpp"
+#include "../Options/Vector2d.hpp"
 
 namespace booba
 {
@@ -12,5 +13,8 @@ namespace booba
         virtual void setShape(Vector2d position)            = 0;
 
         virtual void setColor(Color color)                  = 0;
+    
+    protected:
+        virtual ~Widget() {}
     };
 }

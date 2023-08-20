@@ -15,7 +15,7 @@ namespace booba
          *
          * @return size_t - height of image.
          */
-        virtual Vector2d getSize() = 0;
+        virtual Vector2d getSize() const = 0;
 
         /**
          * @brief Get the Pixel object
@@ -24,7 +24,7 @@ namespace booba
          * @param y - y coord. Must be less than height
          * @return Color - color of pixel
          */
-        virtual Color getPixel(Vector2d position) = 0;
+        virtual Color getPixel(Vector2d position) const = 0;
 
         /**
          * @brief Sets pixel on image.
@@ -45,7 +45,7 @@ namespace booba
          * @param w - width of the rectangular
          * @param h - height of the rectangular
          */
-        virtual Picture getPicture(Vector2d position, Vector2d shape) = 0;
+        virtual Picture getPicture(Vector2d position, Vector2d shape) const = 0;
 
         /**
          * @brief Set picture - a rectangular pixel array.
