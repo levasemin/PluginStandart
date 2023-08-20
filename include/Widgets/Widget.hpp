@@ -15,6 +15,6 @@ namespace booba
         virtual void setColor(Color color)                  = 0;
     
     protected:
-        virtual ~Widget() {}
+        virtual ~Widget()                                   = 0;
     };
 }

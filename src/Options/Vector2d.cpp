@@ -1,52 +1,26 @@
-#pragma once
-
-#include <iostream>
+#include "../../include/Options/Vector2d.hpp"
 
 namespace booba
 {
-    class Vector2d
-    {
-    public:
-        int x_, y_;
+    Vector2d::Vector2d(int x, int y): 
+        x_(x),
+        y_(y)
+        {};
 
-        Vector2d(float x = 0, float y = 0): 
-            x_(x),
-            y_(y)
-            {};
+    Vector2d::Vector2d(float x, float y): 
+        x_(static_cast<int>(x)),
+        y_(static_cast<int>(y))
+        {};
+    
+    Vector2d::Vector2d(uint32_t x, uint32_t y): 
+        x_(static_cast<int>(x)),
+        y_(static_cast<int>(y))
+        {};
 
-        Vector2d(int x, int y): 
-            x_(static_cast<int>(x)),
-            y_(static_cast<int>(y))
-            {};
-        
-        Vector2d(uint32_t x, uint32_t y): 
-            x_(static_cast<int>(x)),
-            y_(static_cast<int>(y))
-            {};
-
-        Vector2d(size_t x, size_t y): 
-            x_(static_cast<int>(x)),
-            y_(static_cast<int>(y))
-            {};
-            
-        Vector2d(const Vector2d &source) = default;
-        Vector2d &operator= (const Vector2d &source) = default;
-        ~Vector2d() = default;
-        
-        friend Vector2d operator + (const Vector2d &first, const Vector2d &second);
-        friend Vector2d operator + (float num, const Vector2d &first);
-        friend Vector2d operator + (const Vector2d &first, float num);
-        friend Vector2d operator - (const Vector2d &first, const Vector2d &second);
-        friend Vector2d operator - (const Vector2d &first, float num);
-        friend Vector2d operator * (const Vector2d &first, float num);
-        friend Vector2d operator * (float num, const Vector2d &first);
-        friend Vector2d operator / (const Vector2d &first, float num);
-        
-        Vector2d &operator -= (const Vector2d &that);
-        Vector2d &operator += (const Vector2d &that);
-        Vector2d &operator *= (float num);
-        Vector2d &operator /= (float num);
-    };
+    Vector2d::Vector2d(size_t x, size_t y): 
+        x_(static_cast<int>(x)),
+        y_(static_cast<int>(y))
+        {}
 
     Vector2d operator + (const Vector2d &first, const Vector2d &second)
     {

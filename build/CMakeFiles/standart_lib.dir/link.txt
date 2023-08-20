@@ -1,0 +1,2 @@
+/usr/bin/ar qc libstandart_lib.a CMakeFiles/standart_lib.dir/src/Options/Color.cpp.o CMakeFiles/standart_lib.dir/src/Options/Picture.cpp.o CMakeFiles/standart_lib.dir/src/Options/Vector2d.cpp.o CMakeFiles/standart_lib.dir/src/WIdgets/Widget.cpp.o
+/usr/bin/ranlib libstandart_lib.a
