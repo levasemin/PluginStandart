@@ -171,5 +171,7 @@ namespace booba
             TextEventData tedata;
             KeyPressedEventData kpedata;
         } Oleg; //Object loading event group.
+
+        Event ();
     };
 }
